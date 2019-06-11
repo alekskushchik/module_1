@@ -65,8 +65,14 @@ function stickyСat() {
 }
 
 function unstickTheСat(){
-    const img = document.getElementByTagName('img');
-    img.style.visibility = 'hidden';
+    const img = document.getElementsByTagName('img');
+    for (let k = 0; k < img.length; k += 1){
+        img[k].remove();
+    }
+    window.removeEventListener('mousemove', (event) => {
+            img.style.left = `${event.clientX}px`;
+            img.style.top = `${event.clientY}px`;
+        })
 }
 window.stickyСat = stickyСat;
 window.unstickTheСat = unstickTheСat;
